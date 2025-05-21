@@ -43,12 +43,13 @@ body {
   }
   
   .profile-photo {
-    width: 260px;
-    height: 260px;
+    width: 250px;
+    height: 250px;
     border-radius: 50%;
     object-fit: cover;
-    object-position: top center;
+    object-position: top center; /* Adjusts cropping to show more of forehead */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border: 4px solid #fff;
   }
   
   
