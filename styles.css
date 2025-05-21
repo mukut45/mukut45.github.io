@@ -19,4 +19,12 @@ body {
     font-weight: bold;
     text-transform: uppercase;
   }
+  .sub-heading {
+    font-size: 28px;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-top: 10px;
+  }
   
