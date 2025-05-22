@@ -106,83 +106,61 @@ body {
   }
 
   .projects-section {
-    background: linear-gradient(to bottom, #f8fafc, #e2e8f0);
-    padding: 60px 20px;
+    padding: 50px 20px;
+    background-color: #f9f9f9;
     text-align: center;
   }
   
-  .projects-section h3 {
-    font-size: 32px;
-    margin-bottom: 40px;
-    color: #0f172a;
-  }
-  
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  .project-cards {
+    display: flex;
+    flex-wrap: wrap;
     gap: 30px;
     justify-content: center;
   }
   
   .project-card {
-    background-color: #ffffff;
+    background: #fff;
     border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
     overflow: hidden;
-    padding: 20px;
+    width: 300px;
+    transition: transform 0.3s ease;
     text-align: left;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
   
   .project-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px);
   }
   
   .project-card img {
     width: 100%;
-    border-radius: 12px;
-    margin-bottom: 15px;
+    height: 180px;
+    object-fit: cover;
   }
   
-  .project-card h4 {
-    margin-bottom: 10px;
-    color: #1e293b;
+  .project-details {
+    padding: 20px;
+  }
+  
+  .project-details h3 {
+    margin: 0 0 10px;
     font-size: 20px;
   }
   
-  .project-card p {
-    font-size: 15px;
-    color: #475569;
-    margin-bottom: 10px;
+  .project-details p {
+    font-size: 14px;
+    color: #555;
   }
   
-  .tech-tags {
-    margin-bottom: 15px;
-  }
-  
-  .tech-tags span {
+  .project-link {
     display: inline-block;
-    background-color: #0f172a;
-    color: #fff;
-    font-size: 12px;
-    padding: 5px 12px;
-    margin: 4px 4px 0 0;
-    border-radius: 15px;
-  }
-  
-  .project-card a {
-    display: inline-block;
-    background-color: #2563eb;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 8px;
+    margin-top: 10px;
+    color: #0077cc;
     text-decoration: none;
     font-weight: bold;
-    transition: background-color 0.3s ease;
   }
   
-  .project-card a:hover {
-    background-color: #1d4ed8;
+  .project-link:hover {
+    text-decoration: underline;
   }
   
