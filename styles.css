@@ -276,3 +276,66 @@ body {
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
   }
   
+  .project-wide-card {
+    display: flex;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    margin: 40px 0;
+    overflow: hidden;
+  }
+  
+  .plots-gallery {
+    width: 75%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 8px;
+    padding: 16px;
+    box-sizing: border-box;
+  }
+  
+  .plots-gallery img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  
+  .project-info {
+    width: 25%;
+    padding: 20px;
+    background-color: #f8f8f8;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .project-info h3 {
+    margin-top: 0;
+    font-size: 20px;
+    color: #333;
+  }
+  
+  .project-info p {
+    margin: 10px 0;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .project-info .project-link {
+    margin-top: 10px;
+    display: inline-block;
+    padding: 10px 14px;
+    background-color: #0077cc;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .project-info .project-link:hover {
+    background-color: #005fa3;
+  }
+  
