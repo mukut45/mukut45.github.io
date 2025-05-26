@@ -163,4 +163,59 @@ body {
   .project-link:hover {
     text-decoration: underline;
   }
+
+  .project-card {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    max-width: 350px;
+    margin: 20px auto;
+  }
+  
+  .project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+  }
+  
+  .project-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .project-details {
+    padding: 20px;
+  }
+  
+  .project-details h3 {
+    font-size: 1.5rem;
+    color: #222;
+    margin-bottom: 10px;
+  }
+  
+  .project-details p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  
+  .project-link {
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
+    border: 1px solid #007BFF;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: background 0.3s, color 0.3s;
+  }
+  
+  .project-link:hover {
+    background: #007BFF;
+    color: #fff;
+  }
   
