@@ -390,3 +390,18 @@ body {
     background-color: #005fa3;
   }
   
+  .social-icons {
+    margin-top: 10px;
+  }
+  
+  .social-icons a {
+    color: #ffffff;
+    margin: 0 10px;
+    font-size: 24px;
+    transition: color 0.3s ease;
+  }
+  
+  .social-icons a:hover {
+    color: #00bcd4;
+  }
+  
