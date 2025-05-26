@@ -339,3 +339,71 @@ body {
     background-color: #005fa3;
   }
   
+  @media (max-width: 768px) {
+    /* Layout shifts to single column */
+    .about-container,
+    .projects-container {
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+  
+    .profile-photo {
+      width: 180px;
+      height: 180px;
+      margin-bottom: 20px;
+    }
+  
+    .about-text,
+    .project-details {
+      text-align: center;
+      width: 100%;
+    }
+  
+    .project-card {
+      flex-direction: column;
+      width: 100%;
+      margin: 15px 0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+  
+    .project-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px 8px 0 0;
+    }
+  
+    .project-details {
+      padding: 15px;
+      align-items: center;
+    }
+  
+    .project-link {
+      width: 100%;
+      text-align: center;
+    }
+  
+    .wide-project-card {
+      flex-direction: column;
+      width: 100%;
+      height: auto;
+    }
+  
+    .wide-project-card .left-portion {
+      width: 100%;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  
+    .wide-project-card .right-portion {
+      width: 100%;
+      padding: 20px;
+      text-align: center;
+    }
+  
+    .left-portion img {
+      width: 45%;
+      margin: 5px;
+    }
+  }
+  
