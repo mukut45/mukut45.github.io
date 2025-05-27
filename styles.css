@@ -404,4 +404,11 @@ body {
   .social-icons a:hover {
     color: #00bcd4;
   }
+
+  footer {
+    background-color: #222; /* Same as header */
+    padding: 20px 0;
+    text-align: center;
+    color: #ffffff;
+  }
   
