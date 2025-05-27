@@ -480,7 +480,7 @@ body {
   
   .logo-track {
     display: flex;
-    width: calc(250px * 14); /* Adjust depending on number of images */
+    width: calc(250px * 10); /* Adjust depending on number of images */
     animation: scroll 30s linear infinite;
   }
   
