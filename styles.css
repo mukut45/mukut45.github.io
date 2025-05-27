@@ -394,7 +394,7 @@ body {
     background-color: #222;
     color: #ffffff;
     padding: 40px 20px 20px;
-    font-size: 7px;
+    font-size: 12px;
   }
   
   .footer-container {
@@ -413,7 +413,7 @@ body {
   
   .footer-column h4 {
     margin-bottom: 12px;
-    font-size: 9px;
+    font-size: 14px;
     color: #00bcd4;
   }
   
