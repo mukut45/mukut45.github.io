@@ -338,58 +338,7 @@ body {
   .project-info .project-link:hover {
     background-color: #005fa3;
   }
-  
-  .project-sidecard {
-    display: flex;
-    align-items: center;
-    background-color: #fff;
-    border-radius: 12px;
-    padding: 24px;
-    margin: 40px 0;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-    gap: 24px;
-    flex-wrap: wrap; /* for responsiveness */
-  }
-  
-  .project-image {
-    width: 50%;
-    max-width: 500px;
-    border-radius: 12px;
-    object-fit: cover;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  }
-  
-  .project-info {
-    flex: 1;
-  }
-  
-  .project-info h3 {
-    margin-top: 0;
-    font-size: 1.8rem;
-    color: #333;
-  }
-  
-  .project-info p {
-    margin: 10px 0;
-    color: #555;
-    line-height: 1.5;
-  }
-  
-  .project-link {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 8px 16px;
-    background-color: #0077cc;
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .project-link:hover {
-    background-color: #ffffff;
-  }
-  
+    
   footer {
     background-color: #222;
     color: #ffffff;
