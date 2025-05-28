@@ -523,4 +523,13 @@ body {
     height: 120px; /* 👈 Set a consistent banner height */
   }
   
+  .footer-split-columns {
+    display: flex;
+    gap: 40px; /* spacing between the two columns */
+  }
+  
+  .footer-split-columns ul {
+    list-style: none;
+    padding: 0;
+  }
   
