@@ -503,3 +503,26 @@ body {
     }
   }
   
+  .tech-ribbon {
+    overflow: hidden;
+    white-space: nowrap;
+    background-color: #0a192f;
+    padding: 10px 0;
+  }
+  
+  .tech-track {
+    display: inline-block;
+    padding-left: 100%;
+    animation: scroll-tech 40s linear infinite;
+  }
+  
+  .tech-track img {
+    margin: 0 10px;
+    vertical-align: middle;
+    height: 28px;
+  }
+  
+  @keyframes scroll-tech {
+    0%   { transform: translateX(0%); }
+    100% { transform: translateX(-100%); }
+  }
