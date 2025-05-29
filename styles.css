@@ -485,7 +485,7 @@ body {
   
   .animated-name {
     display: inline-block;
-    animation: fadeSlide 4s ease-in forwards;
+    animation: fadeSlide 4s  ease-in-out infinite;
   }
   
   @keyframes fadeSlide {
