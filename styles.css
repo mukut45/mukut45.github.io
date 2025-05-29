@@ -10,6 +10,7 @@ body {
     text-align: center;
     padding: 50px 20px;
     background-color: #222;
+    animation: fadeSlide 1.2s ease-out;
   }
   
   .main-heading {
@@ -27,26 +28,6 @@ body {
     letter-spacing: 3px;
     margin-top: 10px;
   }
-
-  .header {
-    text-align: center;
-    padding: 60px 20px;
-    background-color: #222;
-    color: white;
-    animation: fadeSlide 1.5s ease-out;
-  }
-  
-  @keyframes fadeSlide {
-    0% {
-      opacity: 0;
-      transform: translateY(-30px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
   .about {
     padding: 60px 20px;
     background-color: #fff;
@@ -500,5 +481,16 @@ body {
   .footer-split-columns ul {
     list-style: none;
     padding: 0;
+  }
+  
+  @keyframes fadeSlide {
+    0% {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
   
