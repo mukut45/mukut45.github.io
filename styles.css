@@ -421,11 +421,6 @@ body {
     font-weight: bold;
     color: #0f172a; /* #e2e8f0 , #00bcd4*/
   }
-  
-  .project-details {
-  padding: 20px;
-  width: 60%;
-  }
 
   .logo-carousel {
     overflow: hidden;
