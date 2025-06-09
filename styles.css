@@ -426,18 +426,6 @@ body {
   padding: 20px;
   width: 60%;
   }
-  
-  .project-link {
-  display: inline-block;
-  margin-top: 10px;
-  text-decoration: none;
-  color: #007bff;
-  font-weight: bold;
-  }
-
-  .project-link:hover {
-  color: #0056b3;
-  }
 
   .logo-carousel {
     overflow: hidden;
