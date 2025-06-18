@@ -11,6 +11,8 @@ body {
     padding: 50px 20px;
     background-color: #222;
     animation: fadeSlide 1.2s ease-out;
+    position: relative;
+    z-index: 2;
   }
   
   .main-heading {
@@ -527,3 +529,42 @@ body {
     100% { transform: translateX(-100%); }
   }
   
+  .floating-logos {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Prevent logos from blocking clicks */
+  z-index: 1;
+}
+
+.floating-logos img {
+  position: absolute;
+  width: 80px;
+  opacity: 0.2;
+  animation: floatAnim 20s linear infinite;
+}
+
+/* Example: Random positions + delays using nth-child */
+.floating-logos img:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
+.floating-logos img:nth-child(2) { top: 30%; left: 20%; animation-delay: 2s; }
+.floating-logos img:nth-child(3) { top: 50%; left: 60%; animation-delay: 4s; }
+.floating-logos img:nth-child(4) { top: 70%; left: 80%; animation-delay: 6s; }
+.floating-logos img:nth-child(5) { top: 40%; left: 40%; animation-delay: 8s; }
+/* Add more styles for more logos */
+
+@keyframes floatAnim {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translateY(-20px) rotate(10deg);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.2;
+  }
+}
