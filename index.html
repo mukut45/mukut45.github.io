@@ -669,9 +669,9 @@
   const paragraphCharacters =
       "!@#$%^&*0123456789";
 
-  const paragraphEffectRadius = 100;
+  const paragraphEffectRadius = 70;
 
-  const paragraphScrambleSpeed = 0.8;
+  // const paragraphScrambleSpeed = 0.8;
 
   const paragraphEffectDuration = 1500;
 
@@ -826,13 +826,10 @@
                                       paragraphEffectRadius
                                   );
 
-
                               if (
                                   Math.random() <
-                                  intensity *
-                                  paragraphScrambleSpeed
+                                  intensity
                               ) {
-
                                   letter.textContent =
                                       paragraphCharacters[
                                           Math.floor(
