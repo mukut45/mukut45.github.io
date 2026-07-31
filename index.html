@@ -422,8 +422,9 @@
 
           span.className = "scramble-letter";
 
-          span.textContent = 
-              letter == " " ? "\u00A0" : letter;
+          // Preserve spaces
+          span.textContent =
+              letter === " " ? "\u00A0" : letter;
 
           span.dataset.original = letter;
 
