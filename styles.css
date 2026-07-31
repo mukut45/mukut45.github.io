@@ -490,6 +490,9 @@ body {
   .scramble-letter {
       display: inline-block;
   }
+  .scramble-paragraph {
+      cursor: pointer;
+  }
   
   @keyframes fadeSlide {
     0% {
