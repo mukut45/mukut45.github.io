@@ -394,133 +394,243 @@
   </footer>
   <script>
 
-  const textElement = document.querySelector(".animated-name");
+  const textElements = document.querySelectorAll(
+      ".animated-name, .sub-heading"
+  );
 
-  const characters = "!@#$%^&*<>";
+  const characters = "!@#$%^&*0123456789";
 
-  const effectRadius = 150;
+  const effectRadius = 70;
 
-  const scrambleSpeed = 0.3;
+  // How long the effect runs
+  // 1500 = 1.5 seconds
+  const effectDuration = 1500;
 
   let letters = [];
 
 
   // Create individual letters
-  const originalText = textElement.textContent;
+  textElements.forEach((textElement) => {
 
-  textElement.innerHTML = "";
+      const originalText = textElement.textContent;
 
+      textElement.innerHTML = "";
 
-  originalText.split("").forEach((letter) => {
+      originalText.split("").forEach((letter) => {
 
-      const span = document.createElement("span");
+          const span = document.createElement("span");
 
-      span.className = "scramble-letter";
+          span.className = "scramble-letter";
 
-      span.textContent = letter;
+          span.textContent = letter;
 
-      span.dataset.original = letter;
+          span.dataset.original = letter;
 
-      textElement.appendChild(span);
+          textElement.appendChild(span);
 
-      letters.push(span);
+          letters.push(span);
 
-  });
-
-
-  // Track mouse position
-  let mouseX = 0;
-  let mouseY = 0;
-
-
-  document.addEventListener("mousemove", (event) => {
-
-      mouseX = event.clientX;
-      mouseY = event.clientY;
+      });
 
   });
 
 
-  // Animation loop
-  function animateScramble() {
-
-      letters.forEach((letter) => {
-
-          const rect =
-              letter.getBoundingClientRect();
+  // Track which text the mouse is currently over
+  let activeElement = null;
 
 
-          const letterX =
-              rect.left + rect.width / 2;
+  // Store running timers
+  const timers = new Map();
 
 
-          const letterY =
-              rect.top + rect.height / 2;
+  // Add hover event to each text
+  textElements.forEach((textElement) => {
 
 
-          // Distance from mouse
-          const distance = Math.sqrt(
+      // Mouse enters text
+      textElement.addEventListener("mouseenter", () => {
 
-              Math.pow(mouseX - letterX, 2) +
-
-              Math.pow(mouseY - letterY, 2)
-
-          );
-
-
-          // Only affect nearby letters
-          if (distance < effectRadius) {
-
-              const intensity =
-                  1 - (distance / effectRadius);
+          // If an animation is already running
+          if (timers.has(textElement)) {
+              return;
+          }
 
 
-              // Scramble based on speed
-              if (
-                  Math.random() <
-                  intensity * scrambleSpeed
-              ) {
+          // Start the effect
+          const startTime = Date.now();
 
+
+          function scramble() {
+
+              const elapsed =
+                  Date.now() - startTime;
+
+
+              // Stop after effect duration
+              if (elapsed >= effectDuration) {
+
+                  resetText(textElement);
+
+                  timers.delete(textElement);
+
+                  return;
+
+              }
+
+
+              // Get letters belonging to this text only
+              const currentLetters =
+                  textElement.querySelectorAll(
+                      ".scramble-letter"
+                  );
+
+
+              // Get mouse position
+              const mouseX =
+                  window.mouseX || 0;
+
+              const mouseY =
+                  window.mouseY || 0;
+
+
+              currentLetters.forEach((letter) => {
+
+                  const rect =
+                      letter.getBoundingClientRect();
+
+
+                  const letterX =
+                      rect.left +
+                      rect.width / 2;
+
+
+                  const letterY =
+                      rect.top +
+                      rect.height / 2;
+
+
+                  const distance =
+                      Math.sqrt(
+
+                          Math.pow(
+                              mouseX -
+                              letterX,
+                              2
+                          )
+
+                          +
+
+                          Math.pow(
+                              mouseY -
+                              letterY,
+                              2
+                          )
+
+                      );
+
+
+                  // Only affect nearby letters
                   if (
-                      letter.dataset.original !== " "
+                      distance <
+                      effectRadius
                   ) {
 
-                      letter.textContent =
-                          characters[
-                              Math.floor(
-                                  Math.random() *
-                                  characters.length
-                              )
-                          ];
+                      if (
+                          Math.random()
+                          <
+                          0.5
+                      ) {
+
+                          if (
+                              letter.dataset.original
+                              !== " "
+                          ) {
+
+                              letter.textContent =
+                                  characters[
+                                      Math.floor(
+                                          Math.random()
+                                          *
+                                          characters.length
+                                      )
+                                  ];
+
+                          }
+
+                      }
 
                   }
 
-              }
-              else {
+              });
 
-                  letter.textContent =
-                      letter.dataset.original;
 
-              }
+              // Continue animation
+              const timer =
+                  requestAnimationFrame(
+                      scramble
+                  );
+
+
+              timers.set(
+                  textElement,
+                  timer
+              );
 
           }
-          else {
+
+
+          scramble();
+
+      });
+
+
+      // Mouse leaves
+      textElement.addEventListener(
+          "mouseleave",
+          () => {
+
+              resetText(textElement);
+
+          }
+      );
+
+  });
+
+
+  // Reset text
+  function resetText(textElement) {
+
+      const currentLetters =
+          textElement.querySelectorAll(
+              ".scramble-letter"
+          );
+
+
+      currentLetters.forEach(
+          (letter) => {
 
               letter.textContent =
                   letter.dataset.original;
 
           }
-
-      });
-
-
-      requestAnimationFrame(animateScramble);
+      );
 
   }
 
 
-  // Start animation
-  animateScramble();
+  // Track mouse globally
+  document.addEventListener(
+      "mousemove",
+      (event) => {
+
+          window.mouseX =
+              event.clientX;
+
+          window.mouseY =
+              event.clientY;
+
+      }
+  );
 
   </script>
 </body>
