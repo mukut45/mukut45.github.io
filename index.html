@@ -663,10 +663,11 @@
   </script>
 
   <script>
+  const paragraph =
+      document.querySelector(".scramble-paragraph");
 
-  const paragraph = document.querySelector(".scramble-paragraph");
-
-  const paragraphCharacters = "!@#$%^&*0123456789";
+  const paragraphCharacters =
+      "!@#$%^&*0123456789";
 
   const paragraphEffectRadius = 70;
 
@@ -676,29 +677,35 @@
 
   let paragraphLetters = [];
 
-  let mouseX = 0;
-  let mouseY = 0;
+  let paragraphMouseX = 0;
 
-  let isScrambling = false;
+  let paragraphMouseY = 0;
+
+  let paragraphScrambling = false;
 
 
   // Create individual letters
   if (paragraph) {
 
-      const originalText = paragraph.textContent;
+      const originalText =
+          paragraph.textContent;
 
       paragraph.innerHTML = "";
 
       originalText.split("").forEach((letter) => {
 
-          const span = document.createElement("span");
+          const span =
+              document.createElement("span");
 
-          span.className = "paragraph-letter";
+          span.className =
+              "paragraph-letter";
 
           // Keep normal spaces
-          span.textContent = letter;
+          span.textContent =
+              letter;
 
-          span.dataset.original = letter;
+          span.dataset.original =
+              letter;
 
           paragraph.appendChild(span);
 
@@ -706,148 +713,173 @@
 
       });
 
-  }
 
-  // Track mouse position
-  document.addEventListener("mousemove", (event) => {
+      // Track mouse
+      document.addEventListener(
+          "mousemove",
+          (event) => {
 
-      mouseX = event.clientX;
+              paragraphMouseX =
+                  event.clientX;
 
-      mouseY = event.clientY;
+              paragraphMouseY =
+                  event.clientY;
 
-  });
-
-
-  // Start effect when mouse enters paragraph
-  if (paragraph) {
-
-      paragraph.addEventListener("mouseenter", () => {
-
-          // Don't restart while already running
-          if (isScrambling) {
-              return;
           }
-
-          isScrambling = true;
-
-          const startTime = Date.now();
+      );
 
 
-          function scramble() {
+      // Start effect
+      paragraph.addEventListener(
+          "mouseenter",
+          () => {
 
-              const elapsed =
-                  Date.now() - startTime;
-
-
-              // Stop automatically
-              if (elapsed >= effectDuration) {
-
-                  resetParagraph();
-
-                  isScrambling = false;
-
+              if (paragraphScrambling) {
                   return;
+              }
+
+              paragraphScrambling = true;
+
+              const startTime =
+                  Date.now();
+
+
+              function scrambleParagraph() {
+
+                  const elapsed =
+                      Date.now() -
+                      startTime;
+
+
+                  // Stop after duration
+                  if (
+                      elapsed >=
+                      paragraphEffectDuration
+                  ) {
+
+                      resetParagraph();
+
+                      paragraphScrambling =
+                          false;
+
+                      return;
+
+                  }
+
+
+                  paragraphLetters.forEach(
+                      (letter) => {
+
+                          // Don't scramble spaces
+                          if (
+                              letter.dataset.original
+                              === " "
+                          ) {
+                              return;
+                          }
+
+
+                          const rect =
+                              letter.getBoundingClientRect();
+
+
+                          const letterX =
+                              rect.left +
+                              rect.width / 2;
+
+
+                          const letterY =
+                              rect.top +
+                              rect.height / 2;
+
+
+                          const distance =
+                              Math.sqrt(
+
+                                  Math.pow(
+                                      paragraphMouseX -
+                                      letterX,
+                                      2
+                                  )
+
+                                  +
+
+                                  Math.pow(
+                                      paragraphMouseY -
+                                      letterY,
+                                      2
+                                  )
+
+                              );
+
+
+                          // Only affect nearby letters
+                          if (
+                              distance <
+                              paragraphEffectRadius
+                          ) {
+
+                              const intensity =
+                                  1 -
+                                  (
+                                      distance /
+                                      paragraphEffectRadius
+                                  );
+
+
+                              if (
+                                  Math.random() <
+                                  intensity *
+                                  paragraphScrambleSpeed
+                              ) {
+
+                                  letter.textContent =
+                                      paragraphCharacters[
+                                          Math.floor(
+                                              Math.random() *
+                                              paragraphCharacters.length
+                                          )
+                                      ];
+
+                              }
+
+                          }
+                          else {
+
+                              letter.textContent =
+                                  letter.dataset.original;
+
+                          }
+
+                      }
+                  );
+
+
+                  requestAnimationFrame(
+                      scrambleParagraph
+                  );
 
               }
 
 
-              paragraphLetters.forEach((letter) => {
-
-                  const rect =
-                      letter.getBoundingClientRect();
-
-
-                  const letterX =
-                      rect.left +
-                      rect.width / 2;
-
-
-                  const letterY =
-                      rect.top +
-                      rect.height / 2;
-
-
-                  // Distance from cursor
-                  const distance =
-                      Math.sqrt(
-
-                          Math.pow(
-                              mouseX - letterX,
-                              2
-                          )
-
-                          +
-
-                          Math.pow(
-                              mouseY - letterY,
-                              2
-                          )
-
-                      );
-
-
-                  // Only affect letters near cursor
-                  if (
-                      distance < effectRadius &&
-                      letter.dataset.original !== " "
-                  ) {
-
-                      const intensity =
-                          1 -
-                          (distance / effectRadius);
-
-
-                      if (
-                          Math.random() <
-                          intensity * scrambleSpeed
-                      ) {
-
-                          letter.textContent =
-                              characters[
-                                  Math.floor(
-                                      Math.random() *
-                                      characters.length
-                                  )
-                              ];
-
-                      }
-                      else {
-
-                          letter.textContent =
-                              letter.dataset.original;
-
-                      }
-
-                  }
-                  else {
-
-                      // Keep everything else normal
-                      letter.textContent =
-                          letter.dataset.original;
-
-                  }
-
-              });
-
-
-              requestAnimationFrame(scramble);
+              scrambleParagraph();
 
           }
+      );
 
 
-          scramble();
+      // Reset when mouse leaves
+      paragraph.addEventListener(
+          "mouseleave",
+          () => {
 
-      });
+              resetParagraph();
 
+              paragraphScrambling =
+                  false;
 
-      // Reset when mouse leaves paragraph
-      paragraph.addEventListener("mouseleave", () => {
-
-          resetParagraph();
-
-          isScrambling = false;
-
-      });
+          }
+      );
 
   }
 
@@ -855,12 +887,14 @@
   // Reset paragraph
   function resetParagraph() {
 
-      paragraphLetters.forEach((letter) => {
+      paragraphLetters.forEach(
+          (letter) => {
 
-          letter.textContent =
-              letter.dataset.original;
+              letter.textContent =
+                  letter.dataset.original;
 
-      });
+          }
+      );
 
   }
 
