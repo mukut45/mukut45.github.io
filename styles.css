@@ -488,12 +488,12 @@ body {
     display: inline-block;
   }
   .scramble-letter {
-      display: inline-block;
+      display: inline;
   }
   .scramble-paragraph {
       cursor: pointer;
   }
-  
+
   @keyframes fadeSlide {
     0% {
       opacity: 0;
