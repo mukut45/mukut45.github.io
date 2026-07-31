@@ -729,137 +729,122 @@
       );
 
 
-      // Start effect
-      paragraph.addEventListener(
-          "mouseenter",
-          () => {
+     paragraph.addEventListener(
+      "mouseenter",
+      () => {
 
-              if (paragraphScrambling) {
+          if (paragraphScrambling) {
+              return;
+          }
+
+          paragraphScrambling = true;
+
+
+          function scrambleParagraph() {
+
+              // Stop if mouse has left
+              if (!paragraphScrambling) {
                   return;
               }
 
-              paragraphScrambling = true;
 
-              const startTime =
-                  Date.now();
+              paragraphLetters.forEach(
+                  (letter) => {
 
-
-              function scrambleParagraph() {
-
-                  const elapsed =
-                      Date.now() -
-                      startTime;
-
-
-                  // Stop after duration
-                  if (
-                      elapsed >=
-                      paragraphEffectDuration
-                  ) {
-
-                      resetParagraph();
-                      return;
-
-                  }
-
-                  paragraphLetters.forEach(
-                      (letter) => {
-
-                          // Don't scramble spaces
-                          if (
-                              letter.dataset.original
-                              === " "
-                          ) {
-                              return;
-                          }
+                      // Don't scramble spaces
+                      if (
+                          letter.dataset.original === " "
+                      ) {
+                          return;
+                      }
 
 
-                          const rect =
-                              letter.getBoundingClientRect();
+                      const rect =
+                          letter.getBoundingClientRect();
 
 
-                          const letterX =
-                              rect.left +
-                              rect.width / 2;
+                      const letterX =
+                          rect.left +
+                          rect.width / 2;
 
 
-                          const letterY =
-                              rect.top +
-                              rect.height / 2;
+                      const letterY =
+                          rect.top +
+                          rect.height / 2;
 
 
-                          const distance =
-                              Math.sqrt(
+                      const distance =
+                          Math.sqrt(
 
-                                  Math.pow(
-                                      paragraphMouseX -
-                                      letterX,
-                                      2
-                                  )
+                              Math.pow(
+                                  paragraphMouseX -
+                                  letterX,
+                                  2
+                              )
 
-                                  +
+                              +
 
-                                  Math.pow(
-                                      paragraphMouseY -
-                                      letterY,
-                                      2
-                                  )
+                              Math.pow(
+                                  paragraphMouseY -
+                                  letterY,
+                                  2
+                              )
 
+                          );
+
+
+                      // Only affect letters near cursor
+                      if (
+                          distance <
+                          paragraphEffectRadius
+                      ) {
+
+                          const intensity =
+                              1 -
+                              (
+                                  distance /
+                                  paragraphEffectRadius
                               );
 
 
-                          // Only affect nearby letters
                           if (
-                              distance <
-                              paragraphEffectRadius
+                              Math.random() <
+                              intensity
                           ) {
 
-                              const intensity =
-                                  1 -
-                                  (
-                                      distance /
-                                      paragraphEffectRadius
-                                  );
-
-                              if (
-                                  Math.random() <
-                                  intensity
-                              ) {
-                                  letter.textContent =
-                                      paragraphCharacters[
-                                          Math.floor(
-                                              Math.random() *
-                                              paragraphCharacters.length
-                                          )
-                                      ];
-
-                              }
-
-                          }
-                          else {
-
                               letter.textContent =
-                                  letter.dataset.original;
+                                  paragraphCharacters[
+                                      Math.floor(
+                                          Math.random() *
+                                          paragraphCharacters.length
+                                      )
+                                  ];
 
                           }
 
                       }
-                  );
+                      else {
+
+                          letter.textContent =
+                              letter.dataset.original;
+
+                      }
+
+                  }
+              );
 
 
-                  requestAnimationFrame(
-                      scrambleParagraph
-                  );
-
-              }
-
-
-              scrambleParagraph();
+              requestAnimationFrame(
+                  scrambleParagraph
+              );
 
           }
-      );
 
 
+          scrambleParagraph();
+
+      }
+  );
       // Reset when mouse leaves
       paragraph.addEventListener(
           "mouseleave",
