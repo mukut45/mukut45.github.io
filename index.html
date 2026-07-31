@@ -396,20 +396,20 @@
 
   const textElement = document.querySelector(".animated-name");
 
-  const originalText = textElement.innerText;
-
   const characters = "!@#$%^&*0123456789";
 
-  const effectRadius = 80;
+  const effectRadius = 100;
 
   const scrambleSpeed = 0.3;
 
+  let letters = [];
+
 
   // Create individual letters
+  const originalText = textElement.textContent;
 
   textElement.innerHTML = "";
 
-  const letters = [];
 
   originalText.split("").forEach((letter) => {
 
@@ -417,7 +417,7 @@
 
       span.className = "scramble-letter";
 
-      span.innerText = letter;
+      span.textContent = letter;
 
       span.dataset.original = letter;
 
@@ -428,13 +428,21 @@
   });
 
 
-  // Mouse movement
+  // Track mouse position
+  let mouseX = 0;
+  let mouseY = 0;
+
 
   document.addEventListener("mousemove", (event) => {
 
-      const mouseX = event.clientX;
-      const mouseY = event.clientY;
+      mouseX = event.clientX;
+      mouseY = event.clientY;
 
+  });
+
+
+  // Animation loop
+  function animateScramble() {
 
       letters.forEach((letter) => {
 
@@ -445,60 +453,42 @@
           const letterX =
               rect.left + rect.width / 2;
 
+
           const letterY =
               rect.top + rect.height / 2;
 
 
-          // Calculate distance from mouse
+          // Distance from mouse
+          const distance = Math.sqrt(
 
-          const distance =
-              Math.sqrt(
+              Math.pow(mouseX - letterX, 2) +
 
-                  Math.pow(
-                      mouseX - letterX,
-                      2
-                  )
+              Math.pow(mouseY - letterY, 2)
 
-                  +
-
-                  Math.pow(
-                      mouseY - letterY,
-                      2
-                  )
-
-              );
+          );
 
 
-          // Check if mouse is near letter
-
+          // Only affect nearby letters
           if (distance < effectRadius) {
 
-              // Stronger effect when closer
-
               const intensity =
-                  1 -
-                  (distance / effectRadius);
+                  1 - (distance / effectRadius);
 
 
-              // Control effect speed
-
+              // Scramble based on speed
               if (
-                  Math.random()
-                  <
+                  Math.random() <
                   intensity * scrambleSpeed
               ) {
-
-                  // Don't scramble spaces
 
                   if (
                       letter.dataset.original !== " "
                   ) {
 
-                      letter.innerText =
+                      letter.textContent =
                           characters[
                               Math.floor(
-                                  Math.random()
-                                  *
+                                  Math.random() *
                                   characters.length
                               )
                           ];
@@ -506,44 +496,31 @@
                   }
 
               }
-
               else {
 
-                  // Return original letter
-
-                  letter.innerText =
+                  letter.textContent =
                       letter.dataset.original;
 
               }
 
           }
-
           else {
 
-              // Keep letters outside radius normal
-
-              letter.innerText =
+              letter.textContent =
                   letter.dataset.original;
 
           }
 
       });
 
-  });
+
+      requestAnimationFrame(animateScramble);
+
+  }
 
 
-  // Reset when mouse leaves the page
-
-  document.addEventListener("mouseleave", () => {
-
-      letters.forEach((letter) => {
-
-          letter.innerText =
-              letter.dataset.original;
-
-      });
-
-  });
+  // Start animation
+  animateScramble();
 
   </script>
 </body>
