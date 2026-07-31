@@ -605,18 +605,18 @@
               ".scramble-letter"
           );
 
-
       currentLetters.forEach(
           (letter) => {
 
               letter.textContent =
-                  letter.dataset.original;
+                  letter.dataset.original === " "
+                      ? "\u00A0"
+                      : letter.dataset.original;
 
           }
       );
 
   }
-
 
   // Track mouse globally
   document.addEventListener(
