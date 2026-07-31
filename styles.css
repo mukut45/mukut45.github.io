@@ -483,12 +483,6 @@ body {
     padding: 0;
   }
   
-  /* .animated-name {
-    display: inline-block;
-    animation: fadeSlide 4s  ease-in-out infinite;
-  } */
-/* added this code block here if you think its not working fine just remove it and active the previous code block */
-
   .animated-name { 
     cursor: pointer;
     display: inline-block;
