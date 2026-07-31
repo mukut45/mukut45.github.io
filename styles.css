@@ -493,6 +493,9 @@ body {
   .scramble-paragraph {
       cursor: pointer;
   }
+  .paragraph-letter {
+      display: inline;
+  }
 
   @keyframes fadeSlide {
     0% {
