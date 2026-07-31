@@ -667,7 +667,7 @@
       document.querySelector(".scramble-paragraph");
 
   const paragraphCharacters =
-      "<*>!#";
+      "<$%@(){}[]*>!#";
 
   const paragraphEffectRadius = 70;
 
@@ -852,13 +852,14 @@ paragraph.addEventListener(
                 }
             );
 
+            setTimeout(() => {
 
-            requestAnimationFrame(
-                scrambleParagraph
-            );
+                requestAnimationFrame(
+                    scrambleParagraph
+                );
 
-        }
-
+            }, 50);
+      }
 
         scrambleParagraph();
 
