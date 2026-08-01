@@ -420,481 +420,480 @@
       <p>&copy; 2025 Mukut May Dutta | 📧 mukutdutta45@icloud.com | 📞 +91-9008147759</p>
     </div>
   </footer>
-  <script>
 
-  const textElements = document.querySelectorAll(
-      ".animated-name, .sub-heading"
-  );
+//   const textElements = document.querySelectorAll(
+//       ".animated-name, .sub-heading"
+//   );
 
-  const characters = "!@#$%^&*<>";
+//   const characters = "!@#$%^&*<>";
 
-  const effectRadius = 70;
+//   const effectRadius = 70;
 
-  // How long the effect runs
-  // 1500 = 1.5 seconds
-  const effectDuration = 1500;
+//   // How long the effect runs
+//   // 1500 = 1.5 seconds
+//   const effectDuration = 1500;
 
-  let letters = [];
+//   let letters = [];
 
 
-  // Create individual letters
-  textElements.forEach((textElement) => {
+//   // Create individual letters
+//   textElements.forEach((textElement) => {
 
-      const originalText = textElement.textContent;
+//       const originalText = textElement.textContent;
 
-      textElement.innerHTML = "";
+//       textElement.innerHTML = "";
 
-      originalText.split("").forEach((letter) => {
+//       originalText.split("").forEach((letter) => {
 
-          const span = document.createElement("span");
+//           const span = document.createElement("span");
 
-          span.className = "scramble-letter";
+//           span.className = "scramble-letter";
 
-          // Preserve spaces
-          span.textContent =
-              letter === " " ? "\u00A0" : letter;
+//           // Preserve spaces
+//           span.textContent =
+//               letter === " " ? "\u00A0" : letter;
 
-          span.dataset.original = letter;
+//           span.dataset.original = letter;
 
-          textElement.appendChild(span);
+//           textElement.appendChild(span);
 
-      });
+//       });
 
-  });
+//   });
 
 
-  // Track which text the mouse is currently over
-  let activeElement = null;
+//   // Track which text the mouse is currently over
+//   let activeElement = null;
 
 
-  // Store running timers
-  const timers = new Map();
+//   // Store running timers
+//   const timers = new Map();
 
 
-  // Add hover event to each text
-  textElements.forEach((textElement) => {
+//   // Add hover event to each text
+//   textElements.forEach((textElement) => {
 
 
-      // Mouse enters text
-      textElement.addEventListener("mouseenter", () => {
+//       // Mouse enters text
+//       textElement.addEventListener("mouseenter", () => {
 
-          // If an animation is already running
-          if (timers.has(textElement)) {
-              return;
-          }
+//           // If an animation is already running
+//           if (timers.has(textElement)) {
+//               return;
+//           }
 
 
-          // Start the effect
-          const startTime = Date.now();
+//           // Start the effect
+//           const startTime = Date.now();
 
 
-          function scramble() {
+//           function scramble() {
 
-              const elapsed =
-                  Date.now() - startTime;
+//               const elapsed =
+//                   Date.now() - startTime;
 
 
-              // Stop after effect duration
-              if (elapsed >= effectDuration) {
+//               // Stop after effect duration
+//               if (elapsed >= effectDuration) {
 
-                  resetText(textElement);
+//                   resetText(textElement);
 
-                  timers.delete(textElement);
+//                   timers.delete(textElement);
 
-                  return;
+//                   return;
 
-              }
+//               }
 
 
-              // Get letters belonging to this text only
-              const currentLetters =
-                  textElement.querySelectorAll(
-                      ".scramble-letter"
-                  );
+//               // Get letters belonging to this text only
+//               const currentLetters =
+//                   textElement.querySelectorAll(
+//                       ".scramble-letter"
+//                   );
 
 
-              // Get mouse position
-              const mouseX =
-                  window.mouseX || 0;
+//               // Get mouse position
+//               const mouseX =
+//                   window.mouseX || 0;
 
-              const mouseY =
-                  window.mouseY || 0;
+//               const mouseY =
+//                   window.mouseY || 0;
 
 
-              currentLetters.forEach((letter) => {
+//               currentLetters.forEach((letter) => {
 
-                  const rect =
-                      letter.getBoundingClientRect();
+//                   const rect =
+//                       letter.getBoundingClientRect();
 
 
-                  const letterX =
-                      rect.left +
-                      rect.width / 2;
+//                   const letterX =
+//                       rect.left +
+//                       rect.width / 2;
 
 
-                  const letterY =
-                      rect.top +
-                      rect.height / 2;
+//                   const letterY =
+//                       rect.top +
+//                       rect.height / 2;
 
 
-                  const distance =
-                      Math.sqrt(
+//                   const distance =
+//                       Math.sqrt(
 
-                          Math.pow(
-                              mouseX -
-                              letterX,
-                              2
-                          )
+//                           Math.pow(
+//                               mouseX -
+//                               letterX,
+//                               2
+//                           )
 
-                          +
+//                           +
 
-                          Math.pow(
-                              mouseY -
-                              letterY,
-                              2
-                          )
+//                           Math.pow(
+//                               mouseY -
+//                               letterY,
+//                               2
+//                           )
 
-                      );
+//                       );
 
 
-                  // Only affect nearby letters
-                  if (
-                      distance <
-                      effectRadius
-                  ) {
+//                   // Only affect nearby letters
+//                   if (
+//                       distance <
+//                       effectRadius
+//                   ) {
 
-                      if (
-                          Math.random()
-                          <
-                          0.5
-                      ) {
+//                       if (
+//                           Math.random()
+//                           <
+//                           0.5
+//                       ) {
 
-                          if (
-                              letter.dataset.original
-                              !== " "
-                          ) {
+//                           if (
+//                               letter.dataset.original
+//                               !== " "
+//                           ) {
 
-                              letter.textContent =
-                                  characters[
-                                      Math.floor(
-                                          Math.random()
-                                          *
-                                          characters.length
-                                      )
-                                  ];
+//                               letter.textContent =
+//                                   characters[
+//                                       Math.floor(
+//                                           Math.random()
+//                                           *
+//                                           characters.length
+//                                       )
+//                                   ];
 
-                          }
+//                           }
 
-                      }
+//                       }
 
-                  }
+//                   }
 
-              });
+//               });
 
 
-              // Continue animation
-              const timer =
-                  requestAnimationFrame(
-                      scramble
-                  );
+//               // Continue animation
+//               const timer =
+//                   requestAnimationFrame(
+//                       scramble
+//                   );
 
 
-              timers.set(
-                  textElement,
-                  timer
-              );
+//               timers.set(
+//                   textElement,
+//                   timer
+//               );
 
-          }
+//           }
 
 
-          scramble();
+//           scramble();
 
-      });
+//       });
 
 
-      // Mouse leaves
-      textElement.addEventListener(
-          "mouseleave",
-          () => {
+//       // Mouse leaves
+//       textElement.addEventListener(
+//           "mouseleave",
+//           () => {
 
-              resetText(textElement);
+//               resetText(textElement);
 
-          }
-      );
+//           }
+//       );
 
-  });
+//   });
 
 
-  // Reset text
-  function resetText(textElement) {
+//   // Reset text
+//   function resetText(textElement) {
 
-      const currentLetters =
-          textElement.querySelectorAll(
-              ".scramble-letter"
-          );
+//       const currentLetters =
+//           textElement.querySelectorAll(
+//               ".scramble-letter"
+//           );
 
-      currentLetters.forEach(
-          (letter) => {
+//       currentLetters.forEach(
+//           (letter) => {
 
-              letter.textContent =
-                  letter.dataset.original === " "
-                      ? "\u00A0"
-                      : letter.dataset.original;
+//               letter.textContent =
+//                   letter.dataset.original === " "
+//                       ? "\u00A0"
+//                       : letter.dataset.original;
 
-          }
-      );
+//           }
+//       );
 
-  }
+//   }
 
-  // Track mouse globally
-  document.addEventListener(
-      "mousemove",
-      (event) => {
+//   // Track mouse globally
+//   document.addEventListener(
+//       "mousemove",
+//       (event) => {
 
-          window.mouseX =
-              event.clientX;
+//           window.mouseX =
+//               event.clientX;
 
-          window.mouseY =
-              event.clientY;
+//           window.mouseY =
+//               event.clientY;
 
-      }
-  );
+//       }
+//   );
 
-  </script>
+//   
 
-  <script>
-  const paragraph =
-      document.querySelector(".scramble-paragraph");
+//  
+//   const paragraph =
+//       document.querySelector(".scramble-paragraph");
 
-  const paragraphCharacters =
-      "<$%@(){}[]*>!#";
+//   const paragraphCharacters =
+//       "<$%@(){}[]*>!#";
 
-  const paragraphEffectRadius = 80;
+//   const paragraphEffectRadius = 80;
 
-  // const paragraphScrambleSpeed = 0.8;
+//   // const paragraphScrambleSpeed = 0.8;
 
-  const paragraphEffectDuration = 1500;
+//   const paragraphEffectDuration = 1500;
 
-  let paragraphLetters = [];
+//   let paragraphLetters = [];
 
-  let paragraphMouseX = 0;
+//   let paragraphMouseX = 0;
 
-  let paragraphMouseY = 0;
+//   let paragraphMouseY = 0;
 
-  let paragraphScrambling = false;
+//   let paragraphScrambling = false;
 
 
-  // Create individual letters
-  if (paragraph) {
+//   // Create individual letters
+//   if (paragraph) {
 
-      const originalText =
-          paragraph.textContent;
+//       const originalText =
+//           paragraph.textContent;
 
-      paragraph.innerHTML = "";
+//       paragraph.innerHTML = "";
 
-      originalText.split("").forEach((letter) => {
+//       originalText.split("").forEach((letter) => {
 
-          const span =
-              document.createElement("span");
+//           const span =
+//               document.createElement("span");
 
-          span.className =
-              "paragraph-letter";
+//           span.className =
+//               "paragraph-letter";
 
-          // Keep normal spaces
-          span.textContent =
-              letter;
+//           // Keep normal spaces
+//           span.textContent =
+//               letter;
 
-          span.dataset.original =
-              letter;
+//           span.dataset.original =
+//               letter;
 
-          paragraph.appendChild(span);
+//           paragraph.appendChild(span);
 
-          paragraphLetters.push(span);
+//           paragraphLetters.push(span);
 
-      });
+//       });
 
 
-      // Track mouse
-      document.addEventListener(
-          "mousemove",
-          (event) => {
+//       // Track mouse
+//       document.addEventListener(
+//           "mousemove",
+//           (event) => {
 
-              paragraphMouseX =
-                  event.clientX;
+//               paragraphMouseX =
+//                   event.clientX;
 
-              paragraphMouseY =
-                  event.clientY;
+//               paragraphMouseY =
+//                   event.clientY;
 
-          }
-      );
+//           }
+//       );
 
-// Mouse moves inside paragraph
-paragraph.addEventListener(
-    "mousemove",
-    () => {
+// // Mouse moves inside paragraph
+// paragraph.addEventListener(
+//     "mousemove",
+//     () => {
 
-        // Reset previous effect immediately
-        resetParagraph();
+//         // Reset previous effect immediately
+//         resetParagraph();
 
-        // Cancel previous animation
-        paragraphScrambling = false;
+//         // Cancel previous animation
+//         paragraphScrambling = false;
 
 
-        // Start a new effect
-        paragraphScrambling = true;
+//         // Start a new effect
+//         paragraphScrambling = true;
 
-        const startTime = Date.now();
+//         const startTime = Date.now();
 
 
-        function scrambleParagraph() {
+//         function scrambleParagraph() {
 
-            // Stop if a new mouse movement happened
-            // and started a new effect
-            if (!paragraphScrambling) {
-                return;
-            }
+//             // Stop if a new mouse movement happened
+//             // and started a new effect
+//             if (!paragraphScrambling) {
+//                 return;
+//             }
 
 
-            const elapsed =
-                Date.now() - startTime;
+//             const elapsed =
+//                 Date.now() - startTime;
 
 
-            // Stop after 1.5 seconds
-            if (
-                elapsed >=
-                paragraphEffectDuration
-            ) {
+//             // Stop after 1.5 seconds
+//             if (
+//                 elapsed >=
+//                 paragraphEffectDuration
+//             ) {
 
-                resetParagraph();
+//                 resetParagraph();
 
-                paragraphScrambling = false;
+//                 paragraphScrambling = false;
 
-                return;
+//                 return;
 
-            }
+//             }
 
 
-            paragraphLetters.forEach(
-                (letter) => {
+//             paragraphLetters.forEach(
+//                 (letter) => {
 
-                    // Don't scramble spaces
-                    if (
-                        letter.dataset.original === " "
-                    ) {
-                        return;
-                    }
+//                     // Don't scramble spaces
+//                     if (
+//                         letter.dataset.original === " "
+//                     ) {
+//                         return;
+//                     }
 
 
-                    const rect =
-                        letter.getBoundingClientRect();
+//                     const rect =
+//                         letter.getBoundingClientRect();
 
 
-                    const letterX =
-                        rect.left +
-                        rect.width / 2;
+//                     const letterX =
+//                         rect.left +
+//                         rect.width / 2;
 
 
-                    const letterY =
-                        rect.top +
-                        rect.height / 2;
+//                     const letterY =
+//                         rect.top +
+//                         rect.height / 2;
 
 
-                    const distance =
-                        Math.sqrt(
+//                     const distance =
+//                         Math.sqrt(
 
-                            Math.pow(
-                                paragraphMouseX -
-                                letterX,
-                                2
-                            )
+//                             Math.pow(
+//                                 paragraphMouseX -
+//                                 letterX,
+//                                 2
+//                             )
 
-                            +
+//                             +
 
-                            Math.pow(
-                                paragraphMouseY -
-                                letterY,
-                                2
-                            )
+//                             Math.pow(
+//                                 paragraphMouseY -
+//                                 letterY,
+//                                 2
+//                             )
 
-                        );
+//                         );
 
 
-                    if (
-                        distance <
-                        paragraphEffectRadius
-                    ) {
+//                     if (
+//                         distance <
+//                         paragraphEffectRadius
+//                     ) {
 
-                        const intensity =
-                            1 -
-                            (
-                                distance /
-                                paragraphEffectRadius
-                            );
+//                         const intensity =
+//                             1 -
+//                             (
+//                                 distance /
+//                                 paragraphEffectRadius
+//                             );
 
 
-                        if (
-                            Math.random() <
-                            intensity
-                        ) {
+//                         if (
+//                             Math.random() <
+//                             intensity
+//                         ) {
 
-                            letter.textContent =
-                                paragraphCharacters[
-                                    Math.floor(
-                                        Math.random() *
-                                        paragraphCharacters.length
-                                    )
-                                ];
+//                             letter.textContent =
+//                                 paragraphCharacters[
+//                                     Math.floor(
+//                                         Math.random() *
+//                                         paragraphCharacters.length
+//                                     )
+//                                 ];
 
-                        }
+//                         }
 
-                    }
+//                     }
 
-                }
-            );
+//                 }
+//             );
 
-            setTimeout(() => {
+//             setTimeout(() => {
 
-                requestAnimationFrame(
-                    scrambleParagraph
-                );
+//                 requestAnimationFrame(
+//                     scrambleParagraph
+//                 );
 
-            }, 50);
-      }
+//             }, 50);
+//       }
 
-        scrambleParagraph();
+//         scrambleParagraph();
 
-    }
-);
+//     }
+// );
 
-      // Reset when mouse leaves
-      paragraph.addEventListener(
-          "mouseleave",
-          () => {
+//       // Reset when mouse leaves
+//       paragraph.addEventListener(
+//           "mouseleave",
+//           () => {
 
-              resetParagraph();
+//               resetParagraph();
 
-              paragraphScrambling =
-                  false;
+//               paragraphScrambling =
+//                   false;
 
-          }
-      );
+//           }
+//       );
 
-  }
+//   }
 
-  // Reset paragraph
-  function resetParagraph() {
+//   // Reset paragraph
+//   function resetParagraph() {
 
-      paragraphLetters.forEach(
-          (letter) => {
+//       paragraphLetters.forEach(
+//           (letter) => {
 
-              letter.textContent =
-                  letter.dataset.original;
+//               letter.textContent =
+//                   letter.dataset.original;
 
-          }
-      );
+//           }
+//       );
 
-  }
+//   }
 
-  </script>
+<script src="script.js"></script>
 </body>
 </html>
