@@ -112,7 +112,7 @@ body {
   .skills-list li {
     color: #0f172a;
     padding: 5px 10px;
-    font-weight: normal;
+    font-weight: normal !important;
     transition: transform 0.2s ease-in-out;
   }
   
