@@ -91,13 +91,20 @@ body {
     gap: 15px;
   }
   
-  .skills-list li {
+  /* .skills-list li {
     background-color: #0f172a;
     color: #fff;
     padding: 10px 20px;
     border-radius: 30px;
     font-weight: 500;
     box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+  } */
+
+  .skills-list li {
+    color: #0f172a;
+    padding: 5px 10px;
+    font-weight: 500;
     transition: transform 0.2s ease-in-out;
   }
   
