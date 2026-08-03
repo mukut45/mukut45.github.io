@@ -8,7 +8,7 @@ body {
   
   header {
     text-align: center;
-    padding: 50px 20px;
+    padding: 20px 20px;
     background-color: #222;
     animation: fadeSlide 1.2s ease-out;
   }
