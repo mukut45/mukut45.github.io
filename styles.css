@@ -77,13 +77,13 @@ body {
   } */
 
   .skills-section {
-    background-color: #e2e8f0;
+    background-color: transparent;
     padding: 10px 20px;
     text-align: center;
-    border-top: 1px solid #0f172a;
-    border-bottom: 1px solid #0f172a;
+    border-top: 1px dashed #0f172a;
+    border-bottom: 1px dashed #0f172a;
  }
- 
+
   .skills-section h3 {
     font-size: 20px;
     margin-bottom: 30px;
