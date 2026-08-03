@@ -112,13 +112,13 @@ body {
   .skills-list li {
     color: #0f172a;
     padding: 5px 10px;
-    font-weight: 500;
+    font-weight: normal;
     transition: transform 0.2s ease-in-out;
   }
   
   .skills-list li:hover {
     transform: scale(1.05);
-    background-color: #1e293b;
+    background-color: transparent;
   }
 
   .projects-section {
