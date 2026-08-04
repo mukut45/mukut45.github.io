@@ -157,7 +157,7 @@
       document.querySelector(".scramble-paragraph");
   const paragraphCharacters =
       "<$%@(){}[]*>!#";
-  const paragraphEffectRadius = 50;
+  const paragraphEffectRadius = 0;
   // const paragraphScrambleSpeed = 0.8;
   const paragraphEffectDuration = 1500;
   let paragraphLetters = [];
