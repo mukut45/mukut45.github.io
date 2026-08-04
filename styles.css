@@ -295,7 +295,7 @@ body {
   
   .project-wide-card {
     display: flex;
-    background-color: #ffffff;
+    background-color: #cc1717;
     border-radius: 16px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
     margin: 40px 0;
