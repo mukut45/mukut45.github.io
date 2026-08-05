@@ -9,7 +9,7 @@ body {
   header {
     text-align: center;
     padding: 20px 20px;
-    background-color: #5601cc;
+    background-color: #0f05a8;
     /* animation: fadeSlide 1.2s ease-out; */
   }
   
@@ -533,7 +533,7 @@ body {
   .tech-ribbon {
     overflow: hidden;
     white-space: nowrap;
-    background-color: #050505;
+    background-color: #ffffff;
     padding: 6px 0;
   }
   
