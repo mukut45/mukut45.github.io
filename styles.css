@@ -426,7 +426,8 @@ body {
   }
   
   .projects-banner {
-    background-color: #0f05a8; /* Match header/footer #0a192f*/
+    background-color: #fefefe;
+    border-top: 1px dashed #000000; /* Match header/footer #0a192f*/
     color: white;
     text-align: center;
     padding: 40px 20px;
